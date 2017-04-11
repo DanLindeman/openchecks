@@ -73,6 +73,6 @@ class HttpFirewallCheck(FirewallCheck):
 
 if __name__=='__main__':
     tables = [{'dl_src':'00:00:00:00:00:01', 'dl_dst':'00:00:00:00:00:02', 'tp_dst': 80, 'actions':'NORMAL'},
-              {'dl_src':'00:00:00:00:00:02', 'dl_dst':'00:00:00:00:00:01', 'tp_dst': 90, 'actions':'NORMAL'},
+              {'dl_src':'00:00:00:00:00:02', 'dl_dst':'00:00:00:00:00:01', 'tp_dst': 80, 'actions':'NORMAL'},
               {'actions':'ANY'}]
     f1 = HttpFirewallCheck(tables)
