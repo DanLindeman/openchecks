@@ -54,7 +54,6 @@ class HttpFirewallCheck(FirewallCheck):
     
     def specify_source_ips(self):
         # assert that source IPs have been specified in the tables
-        print(self.src_ips)
         assert(self.src_ips)
         print("specify_source_ips check passed")
 
