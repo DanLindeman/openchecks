@@ -9,13 +9,13 @@ class FirewallCheck(object):
         self.run_all_checks()
 
     def run_all_checks(self):
-        self.specify_soure_ips()
+        self.specify_source_ips()
         self.specify_destination_ip()
         self.specify_destination_port()
         self.block_by_default()
         self.allow_specific_traffic()        
 
-    def specify_soure_ips(self):
+    def specify_source_ips(self):
         raise NotImplementedError
 
     def specify_destination_ip(self):
@@ -54,6 +54,7 @@ class HttpFirewallCheck(FirewallCheck):
     
     def specify_source_ips(self):
         # assert that source IPs have been specified in the tables
+        print(self.src_ips)
         assert(self.src_ips)
         print("specify_source_ips check passed")
 
@@ -72,7 +73,7 @@ class HttpFirewallCheck(FirewallCheck):
         print("specify_destination_port check passed")
 
 if __name__=='__main__':
-    tables = [{'dl_src':'00:00:00:00:00:01', 'dl_dst':'00:00:00:00:00:02', 'tp_dst': 80, 'actions':'NORMAL'},
-              {'dl_src':'00:00:00:00:00:02', 'dl_dst':'00:00:00:00:00:01', 'tp_dst': 80, 'actions':'NORMAL'},
+    tables = [{'dl_src':'10.0.0.1', 'dl_dst':'10.0.0.2', 'tp_dst': 80, 'actions':'NORMAL'},
+              {'dl_src':'10.0.0.2', 'dl_dst':'10.0.0.1', 'tp_dst': 80, 'actions':'NORMAL'},
               {'actions':'ANY'}]
     f1 = HttpFirewallCheck(tables)
